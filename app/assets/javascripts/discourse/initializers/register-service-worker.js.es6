@@ -5,6 +5,8 @@ export default {
     const isSecured =
       document.location.protocol === "https:" ||
       location.hostname === "localhost";
+    
+      console.log("hello world");
 
     const isSupported = isSecured && "serviceWorker" in navigator;
 
@@ -18,6 +20,9 @@ export default {
               registration.active &&
               !registration.active.scriptURL.includes(
                 Discourse.ServiceWorkerURL
+              ) &&
+              !registration.active.scriptURL.includes(
+                "https://alfred.camera/webapp/fcm-sw-2.js"
               )
             ) {
               registration.unregister();
